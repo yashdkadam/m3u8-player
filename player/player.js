@@ -132,7 +132,7 @@ function next() {
   j++;
 }
 
-function load(params) {
+function load() {
   navigator.clipboard.writeText(
     "https://redditsave.com/info?url=" + hls_urls[j - 1]
   );
