@@ -1,0 +1,86 @@
+<html>
+
+<head>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+  <script src="mousetrap.min.js" charset="utf-8"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      background-color: black;
+    }
+
+    #video {
+      position: absolute;
+      top: 0px;
+      right: 0px;
+      bottom: 0px;
+      left: 0px;
+      margin: auto;
+      max-height: 100%;
+      max-width: 100%;
+    }
+
+    .float {
+      position: fixed;
+      width: 100px;
+      height: 100px;
+      bottom: 80px;
+      background-color: #0c9;
+      color: #fff;
+      border-radius: 50px;
+      text-align: center;
+      box-shadow: 2px 2px 3px #999;
+    }
+
+    .my-float {
+      margin-top: 20px;
+      right: 40px;
+    }
+
+    .my-float-left {
+      margin-top: 20px;
+      left: 40px;
+    }
+
+    .my-float-mid {
+      margin-top: 20px;
+      left: 180px;
+    }
+  </style>
+  <title>M3U8 Player running...</title>
+</head>
+
+<body>
+  <div class="main">
+
+    <video id="video" style="width: 100vw; height: 100vh;" controls="" autoplay loop></video>
+    <a onclick="sound()" class="float my-float" id="float-btn"><i id="font"
+        class="fa fa-volume-up fa-4x my-float"></i></a>
+    <a onclick="next()" class="float my-float-left" id="float-btn"><i id="font"
+        class="fa fa-arrow-right fa-4x my-float"></i></a>
+    <button onclick="load()" class="float my-float-mid" id="float-btn"><i id="font"
+        class="fa fa-download fa-4x my-float"></i></button>
+    <script src="player.js"></script>
+    <script>
+      function sound() {
+        console.log("found");
+        let sound = $('video').prop('muted');
+        const condition = (sound === true) ? false : true;
+        console.log(condition);
+        $('video').prop('muted', condition);
+        if (condition === true) {
+          $('#font').removeClass('fa-volume-up').addClass('fa-volume-off');
+        }
+        else {
+          $('#font').removeClass('fa-volume-off').addClass('fa-volume-up');
+
+        }
+      }
+    </script>
+  </div>
+</body>
+
+</html>
