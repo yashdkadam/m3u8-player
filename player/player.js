@@ -76,7 +76,7 @@ var randomInt = Math.floor(Math.random() * 33);
 var sectionInt = Math.floor(Math.random() * 5);
 sections = ["top", "", "new", "hot", "rising"];
 
-const api_url = `https://www.reddit.com/r/${subreddit[randomInt}/${sectionInt}.json`;
+const api_url = `https://www.reddit.com/r/${subreddit[randomInt}/${sections[sectionInt]}.json`;
 
 var hls_urls = [];
 
