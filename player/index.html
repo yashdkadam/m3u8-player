@@ -65,6 +65,11 @@
         class="fa fa-download fa-4x my-float"></i></button>
     <script src="player.js"></script>
     <script>
+      function next() {
+        playM3u8(hls_urls[j]);
+        j++;
+      }
+      
       function sound() {
         console.log("found");
         let sound = $('video').prop('muted');
