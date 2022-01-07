@@ -197,6 +197,9 @@ function delay(milisec) {
 
 function next() {
   j++;
+  if(j >= hls_urls.length){
+  j = 0;
+  }
   playM3u8(hls_urls[j]);
   video.play();
 }
