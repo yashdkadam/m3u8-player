@@ -65,15 +65,18 @@ $(window).on("load", function () {
   Mousetrap.bind("f", vidFullscreen);
 });
 
-subreddit = ["IndianDankMemes"];
-var randomInt = Math.floor(Math.random() * 19);
+subreddit = ["IndianDankMemes","BikiniBottomTwitter", "AdviceAnimals", "MemeEconomy",
+            "ComedyCemetery", "memes", "PrequelMemes", "PewdiepieSubmissions",
+            "terriblefacebookmemes", "funny", "wholesomememes", "raimimemes",
+            "historymemes", "okbuddyretard", "im14andthisisdeep", "puns", "nnn",
+            "Community", "Puns", "IndianMeyMeys", "IndiaSpeaks", "IndianMemeTemplates", "indiameme", 
+            "MemeAlleyway", "MemeChimera", "memeconvention", "india", "funnyindianvideo"
+            , "Indiafunny", "meme", "MemePiece", "dankvideos", "PlayItAgainSam"];
+var randomInt = Math.floor(Math.random() * 33);
+var sectionInt = Math.floor(Math.random() * 5);
 sections = ["top", "", "new", "hot", "rising"];
 
-const api_url = "https://www.reddit.com/r/IndianDankMemes/new/.json";
-const sendUrl =
-  "https://api.telegram.org/bot1844605763:AAHxBe1QkguzWlhh32Wr13O5tv7wbbG-5wU/sendVideo?chat_id=@myemailbox&video=";
-const sendMessage =
-  "https://api.telegram.org/bot1844605763:AAHxBe1QkguzWlhh32Wr13O5tv7wbbG-5wU/sendMessage?chat_id=@myemailbox&text=50%20memes%20send";
+const api_url = `https://www.reddit.com/r/${subreddit[randomInt}/${sectionInt}.json`;
 
 var hls_urls = [];
 
@@ -96,7 +99,6 @@ async function getapi(url, int, int) {
         response["data"]["children"][i]["data"]["permalink"],
         "permalink"
       );
-      console.log(response["data"]["children"][i]["data"]["title"], "title");
     } catch (error) {
       const e = new ErrorEvent("error", { message: "my error", error: error });
       window.dispatchEvent(e);
