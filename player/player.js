@@ -75,6 +75,7 @@ subreddit = ["IndianDankMemes","BikiniBottomTwitter", "AdviceAnimals", "MemeEcon
 var randomInt = Math.floor(Math.random() * 33);
 var sectionInt = Math.floor(Math.random() * 5);
 sections = ["top", "", "new", "hot", "rising"];
+console.log(subreddit[randomInt], sections[sectionInt]);
 
 const api_url = `https://www.reddit.com/r/${subreddit[randomInt]}/${sections[sectionInt]}.json`;
 
