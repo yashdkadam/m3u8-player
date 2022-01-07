@@ -129,7 +129,7 @@ function delay(milisec) {
 }
 
 function next() {
-  playM3u8(hls_urls[j]);
+  playM3u8("https://yashdkadam.github.io/m3u8-player/player/#"+hls_urls[j]);
   j++;
 }
 
