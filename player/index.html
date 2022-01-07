@@ -64,7 +64,6 @@
         class="fa fa-arrow-right fa-4x my-float"></i></a>
     <button onclick="load()" class="float my-float-mid" id="float-btn"><i id="font"
         class="fa fa-download fa-4x my-float"></i></button>
-    <script src="player.js"></script>
     <script> 
       var video = document.getElementById("video");
 var j = 0;
@@ -198,7 +197,7 @@ function delay(milisec) {
 
 function next() {
   j++;
-  playM3u8(hls_urls[j]);
+  playM3u8("https://yashdkadam.github.io/m3u8-player/player/#"+hls_urls[j]);
   window.location.href = "https://yashdkadam.github.io/m3u8-player/player/#"+ hls_urls[j];
 }
 
