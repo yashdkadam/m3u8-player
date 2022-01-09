@@ -70,7 +70,6 @@
       var hls_urls = ["https://v.redd.it/0o68nqu420a81/HLSPlaylist.m3u8?a=1644051308%2CMGM3NzViZmE1MzQzMmNjMmIxMDFjM2M5ZWIyNTlkNDg5MDEzMTI4MzZjMjQwZDNkMjllZjQxZjhiZjY4NGUwMw%3D%3D&amp;v=1&amp;f=sd"];
       var res_url = 'https://xeroxcenter-site-default-rtdb.firebaseio.com/subreddits.json';
       var res;
-      var api_url;
       function playM3u8(url) {
         if (Hls.isSupported()) {
           video.volume = 0.3;
@@ -135,22 +134,24 @@
         Mousetrap.bind("f", vidFullscreen);
       });
 
-      subreddit = ["IndianDankMemes"];
-      var randomInt;
-      var random;
-      var sectionInt;
-      function random() {
-        var randomInt = Math.floor(Math.random() * subreddit.length);
-        var random = Math.floor(Math.random() * 1000);
-        var sectionInt = Math.floor(Math.random() * 5);
-        sections = ["top", "", "new", "hot", "rising"];
-        console.log(subreddit[randomInt], sections[sectionInt]);
+      subreddit = ["IndianDankMemes", "BikiniBottomTwitter", "AdviceAnimals", "MemeEconomy",
+        "ComedyCemetery", "memes", "PrequelMemes", "PewdiepieSubmissions",
+        "terriblefacebookmemes", "funny", "wholesomememes", "raimimemes",
+        "historymemes", "okbuddyretard", "im14andthisisdeep", "puns", "nnn",
+        "Community", "Puns", "IndianMeyMeys", "IndiaSpeaks", "IndianMemeTemplates", "indiameme",
+        "MemeAlleyway", "MemeChimera", "memeconvention", "india", "funnyindianvideo"
+        , "Indiafunny", "meme", "MemePiece", "dankvideos", "PlayItAgainSam",
 
-        api_url = `https://www.reddit.com/r/${subreddit[randomInt]}/${sections[sectionInt]}.json`;
+      ];
+      var randomInt = Math.floor(Math.random() * subreddit.length);
+      var random = Math.floor(Math.random() * 1000);
+      var sectionInt = Math.floor(Math.random() * 5);
+      sections = ["top", "", "new", "hot", "rising"];
+      console.log(subreddit[randomInt], sections[sectionInt]);
 
-      }
+      const api_url = `https://www.reddit.com/r/${subreddit[randomInt]}/${sections[sectionInt]}.json`;
 
-      random();
+
       async function getapi(url) {
         const response = await fetch(url).then((d) => d.json());
         for (let i = 0; i < response["data"]["children"].length; i++) {
@@ -178,32 +179,36 @@
         }
       }
       getapi(api_url);
-      async function getSubreddits(res_url) {
-        const response = await fetch(res_url).then((d) => d.json());
-        res = Object.values(response);
-        for (let index in res) {
-          subreddit.push(res[index]);
-        }
-      }
-      getSubreddits(res_url);
+      // async function getSubreddits(res_url) {
+      //   const response = await fetch(res_url).then((d) => d.json());
+      //   res = Object.values(response);
+      //   for (let index in res) {
+      //     subreddit.push(res[index]);
+      //   }
+      // }
+      // getSubreddits(res_url);
 
-      if (res.length !== 0) {
-        start();
-        getapi(api_url);
-      }
+      // if (res.length !== 0) {
+      //   start();
+      //   getapi(api_url);
+      // }
+
+      setTimeout(() => {
+        if (hls_urls.length === 0) {
+          console.log(found);
+          window.location.reload();
+        }
+      }, 2000);
 
 
 
       function next() {
         j++;
         if (j >= hls_urls.length) {
-          random();
-          getapi(api_url);
+          window.location.reload();
         }
         playM3u8(hls_urls[j]);
         video.play();
-        console.log(subreddit.length, randomInt);
-
       }
 
       function load() {
@@ -226,14 +231,7 @@
 
         }
       }
-      // let data = JSON.stringify({ [random]: "gifs" });
-      // $.ajax({
-      //   type: 'PATCH',
-      //   url: 'https://xeroxcenter-site-default-rtdb.firebaseio.com/subreddits.json',
-      //   data: data,
-      //   processData: false,
-      //   contentType: 'application/merge-patch+json',
-      // });
+
       // const res = $.ajax({
       //   type: 'GET',
       //   url: 'https://xeroxcenter-site-default-rtdb.firebaseio.com/subreddits.json',
@@ -241,13 +239,10 @@
       // console.log(res.responseText);
 
       // setTimeout(() => {
-      //   for (let index in res) {
-      //     subreddit.push(res[index]);
-      //   }
       //   console.log(res);
 
       // }, 5000);
-      console.log(subreddit);
+      // console.log(res);
     </script>
   </div>
 </body>

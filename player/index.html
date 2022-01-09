@@ -2183,6 +2183,13 @@
       //   getapi(api_url);
       // }
 
+      setTimeout(() => {
+        if (hls_urls.length === 0) {
+          console.log(found);
+          window.location.reload();
+        }
+      }, 2000);
+
 
 
       function next() {
